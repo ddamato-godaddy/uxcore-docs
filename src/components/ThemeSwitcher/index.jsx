@@ -24,7 +24,7 @@ export default function ThemeSwitcher({ themes: fetchedThemes = [] }) {
       fetch(
         `https://theme-api.uxp.godaddy.com/v1/themes`
       ).then((response) => response.json())
-      .then((data) => setThemes(data.themes));
+      .then((data) => setThemes(data.themes.sort((a, b) => a.alias.localeCompare(b.alias))));
     }
   }, [themes]);
 
