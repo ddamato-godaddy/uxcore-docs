@@ -1,11 +1,11 @@
 ---
-import { getCollection } from "astro:content";
 import Page from "@layouts/Page.astro";
+import getAllContent from '@utils/getAllContent.js';
 
 export async function getStaticPaths() {
-  const components = await getCollection("components");
-  return components.map((entry) => ({
-    params: { slug: entry.slug },
+  const content = await getAllContent();
+  return content.map((entry) => ({
+    params: { slug: entry.slug, section: entry.section },
     props: { entry },
   }));
 }

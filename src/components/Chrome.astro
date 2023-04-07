@@ -1,47 +1,13 @@
 ---
 import path from 'path';
-import { remark } from 'remark';
-import mdx from 'remark-mdx';
-import strip from 'remark-mdx-to-plain-text';
 
-import { getCollection } from 'astro:content';
-import { sections } from '@content/config';
+import getAllContent from '@utils/getAllContent.js';
+import mdxNormalize from '@utils/mdxNormalize';
 
 import ThemeSwitcher from '@components/ThemeSwitcher';
 import SiteSearch from '@components/SiteSearch';
 import MainNavigation from '@components/MainNavigation';
 import ContentNavigation from '@components/ContentNavigation';
-
-function stringify(body) {
-  return new Promise((resolve, reject) => {
-    remark()
-      .use(mdx)
-      .use(strip, ['mdxjsEsm', 'mdxJsxFlowElement'])
-      .process(body, function (err, file) {
-        if (err) reject(err);
-        resolve(String(file));
-      });
-  });
-}
-
-async function getAllContent() {
-  const collections = await Promise.all(
-    sections.map(async function collect(section) {
-      const collections = await getCollection(section);
-      const promises = collections.map(async function transform(collection) {
-        const body = await stringify(collection.body);
-        return {
-          ...collection,
-          body,
-          path: path.join(import.meta.env.BASE_URL, section, collection.slug),
-        };
-      });
-      return Promise.all(promises);
-    })
-  );
-
-  return collections.flat();
-}
 
 function buildNavigation(reference) {
   return reference.reduce((acc, entry) => {
@@ -53,6 +19,19 @@ function buildNavigation(reference) {
   }, {});
 }
 
+async function transform(collection) {
+  const body = await mdxNormalize(collection.body);
+  return {
+    ...collection,
+    body,
+    path: path.join(import.meta.env.BASE_URL, collection.section, collection.slug),
+  };
+}
+
+const content = await getAllContent(transform);
+const navigation = buildNavigation(content);
+const { outline } = Astro.props;
+
 /*
 When we're able to use the VPN in the remote build, we can use this instead
 
@@ -61,10 +40,6 @@ const themes  = await fetch('https://theme-api.uxp.godaddy.com/v1/themes')
   .then(({ themes }) => themes);
 */
 const themes = null;
-
-const content = await getAllContent();
-const navigation = buildNavigation(content);
-const { outline } = Astro.props;
 ---
 
 <style lang="scss">

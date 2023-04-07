@@ -14,6 +14,6 @@ const schema = {
 };
 
 export const collections = sections.reduce(
-  (acc, name) => Object.assign(acc, { [name]: defineCollection(schema) }),
+  (acc, name) => Object.assign(acc, { [name]: defineCollection({ ...schema }) }),
   {}
 );
