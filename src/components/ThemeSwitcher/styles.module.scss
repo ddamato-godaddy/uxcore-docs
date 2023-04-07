@@ -1,5 +1,12 @@
 @import '../../intents.scss';
 
+.vpn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: .5rem;
+}
+
 .select {
   font: inherit;
   padding: .5rem;

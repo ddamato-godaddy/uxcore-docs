@@ -53,9 +53,14 @@ function buildNavigation(reference) {
   }, {});
 }
 
+/*
+When we're able to use the VPN in the remote build, we can use this instead
+
 const themes  = await fetch('https://theme-api.uxp.godaddy.com/v1/themes')
   .then((response) => response.json())
   .then(({ themes }) => themes.sort((a, b) => a.alias.localeCompare(b.alias)));
+*/
+const themes = null;
 
 const content = await getAllContent();
 const navigation = buildNavigation(content);

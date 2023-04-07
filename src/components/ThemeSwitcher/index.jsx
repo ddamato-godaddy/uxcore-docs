@@ -12,10 +12,21 @@ function headRender({ themeCSS, fontFaces }) {
   style.textContent = `${fontFaces} ${themeCSS}`;
 }
 
-export default function ThemeSwitcher({ themes }) {
+export default function ThemeSwitcher({ themes: fetchedThemes = [] }) {
+  const [themes, setThemes] = useState(fetchedThemes);
+
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || '';
   });
+
+  useEffect(() => {
+    if (!themes?.length) {
+      fetch(
+        `https://theme-api.uxp.godaddy.com/v1/themes`
+      ).then((response) => response.json())
+      .then((data) => setThemes(data.themes));
+    }
+  }, [themes]);
 
   useEffect(() => {
     if (!theme) return;
@@ -29,8 +40,14 @@ export default function ThemeSwitcher({ themes }) {
     theme && localStorage.setItem('theme', theme);
   }, [theme])
 
+  if (!themes?.length) return (
+    <strong className={ styles.vpn }>
+      Check VPN!
+    </strong>
+  );
+
   return (
-    <div className={ styles.root }>
+    <div>
       <select onChange={(ev) => setTheme(ev.target.value)} value={ theme } className={ styles.select }>
         <option disabled value=''>
           Select a theme
