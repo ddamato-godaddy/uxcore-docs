@@ -1,0 +1,33 @@
+---
+import { getCollection } from "astro:content";
+import Page from "@layouts/Page.astro";
+
+export async function getStaticPaths() {
+  const components = await getCollection("components");
+  return components.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content, headings } = await entry.render();
+
+function nested(headings) {
+  const parentHeadings = new Map();
+  return headings.reduce((acc, h) => {
+    const heading = { ...h, children: [] };
+    parentHeadings.set(heading.depth, heading);
+    const parent =  parentHeadings.get(heading.depth - 1);
+    const target = !parent ? acc : parent.children;
+    target.push(heading);
+    return acc;
+  }, []);
+}
+
+const outline = nested(headings);
+---
+
+<Page title={entry.data.title} outline={ outline }>
+  <Content />
+</Page>

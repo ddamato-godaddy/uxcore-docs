@@ -1,0 +1,62 @@
+---
+import Chrome from '@components/Chrome.astro';
+const { title, outline } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta name='viewport' content='width=device-width' />
+    <meta name='generator' content={Astro.generator} />
+    <title>{title}</title>
+    <script src="https://unpkg.com/component-anatomy" defer></script>
+  </head>
+  <body>
+    <Chrome outline={ outline }>
+      <h1>{title}</h1>
+      <slot />
+    </Chrome>
+  </body>
+
+  <style is:global lang="scss">
+    @import '@ux/intents/lib/index';
+
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: $ux-text-fontFamily;
+      font-size: $ux-text-fontSize;
+      font-weight: $ux-text-fontWeight;
+      line-height: $ux-text-lineHeight;
+      background: $ux-box-backgroundColor;
+      color: $ux-box-foregroundColor;
+    }
+
+    a {
+      color: $ux-navigate-foregroundColor;
+      &:hover {
+        color: $ux-navigateHovered-foregroundColor;
+      }
+    }
+
+    h1 {
+      font-family: $ux-textHeading-fontFamily;
+      font-size: $ux-textHeading-fontSize;
+      font-weight: $ux-textHeading-fontWeight;
+      line-height: $ux-textHeading-lineHeight;
+    }
+
+    h2, h3, h4 {
+      font-family: $ux-textTitle-fontFamily;
+      font-size: $ux-textTitle-fontSize;
+      font-weight: $ux-textTitle-fontWeight;
+      line-height: $ux-textTitle-lineHeight;
+    }
+  </style>
+</html>

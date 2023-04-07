@@ -1,0 +1,39 @@
+@import '@ux/intents/lib/index';
+
+.root {
+  position: relative;
+}
+
+.input {
+  font: inherit;
+  padding: .5rem;
+  appearance: none;
+  border: $ux-control-borderWidth solid $ux-control-borderColor;
+  border-radius: $ux-control-borderRadius;
+  background-color: $ux-control-backgroundColor;
+  color: $ux-control-foregroundColor;
+}
+
+.results {
+  position: absolute;
+  border: $ux-box-borderWidth solid $ux-box-borderColor;
+  border-radius: $ux-control-borderRadius;
+  padding: .5rem;
+  margin-top: .5rem;
+  top: 100%;
+  right: 0;
+  background: $ux-box-backgroundColor;
+  min-width: 100%;
+  width: max-content;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-top: 1rem;
+  }
+
+  h2 {
+    margin: 0;
+  }
+}

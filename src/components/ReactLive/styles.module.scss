@@ -1,0 +1,19 @@
+@import '@ux/intents/lib/index';
+
+.root {
+  background: $ux-boxLowContrast-backgroundColor;
+  border: $ux-box-borderWidth solid $ux-box-borderColor;
+  color: $ux-boxLowContrast-foregroundColor;
+  padding: 1rem;
+}
+
+.editor {
+
+}
+
+.preview {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

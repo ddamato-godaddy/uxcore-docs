@@ -1,0 +1,27 @@
+---
+const { definitions } = Astro.props;
+---
+
+<style lang="scss">
+  @import '@ux/intents/lib/index';
+  component-anatomy {
+    padding: 1rem;
+    display: block;
+    background: $ux-boxLowContrast-backgroundColor;
+    border: $ux-box-borderWidth solid $ux-box-borderColor;
+    --component-anatomy--pin-fg: #{$ux-feedback-feedbackColor};
+    --component-anatomy--pin-bg: #{$ux-feedback-onFeedbackColor};
+  }
+
+  .root {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+  }
+</style>
+
+<component-anatomy orientation='vertical' definitions={ definitions }>
+  <div class='root'>
+    <slot/>
+  </div>
+</component-anatomy>

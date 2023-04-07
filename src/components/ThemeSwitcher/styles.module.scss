@@ -1,0 +1,12 @@
+@import '@ux/intents/lib/index';
+
+.select {
+  font: inherit;
+  padding: .5rem;
+  border: $ux-control-borderWidth solid $ux-control-borderColor;
+  border-radius: $ux-control-borderRadius;
+  appearance: none;
+  cursor: pointer;
+  background-color: $ux-control-backgroundColor;
+  color: $ux-control-foregroundColor;
+}

@@ -1,0 +1,107 @@
+@import '@ux/intents/lib/index';
+
+.namespace {
+	opacity: .7;
+}
+
+.language-css .token.string.url {
+	text-decoration: underline;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.doctype .token.doctype-tag,
+.token.operator.arrow,
+.token.keyword,
+.token.important,
+.token.punctuation.interpolation-punctuation,
+.token.boolean,
+.token.entity {
+	color: $ux-figure-figureColor0;
+}
+
+.token.doctype .token.name,
+.token.atrule .token.url,
+.token.constant,
+.token.console,
+.token.parameter,
+.token.interpolation,
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name,
+.token.attr-name {
+	color: $ux-figure-figureColor1;
+}
+
+.token.comment,
+.token.prolog {
+	color: $ux-figure-figureColor2;
+}
+
+.token.punctuation,
+.language-html .language-css .token.punctuation,
+.language-html .language-javascript .token.punctuation,
+.token.operator,
+.token.entity,
+.token.atrule .token.url .token.punctuation,
+.token.attr-value .token.punctuation.attr-equals {
+	color: $ux-figure-figureColor3;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+	color: $ux-figure-figureColor4;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted,
+.token.atrule,
+.token.attr-value,
+.token.attr-value .token.punctuation {
+	color: $ux-figure-figureColor5;
+}
+
+.token.atrule .token.rule,
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: $ux-figure-figureColor6;
+}
+
+.token.function,
+.token.function .token.maybe-class-name,
+.token.atrule .token.url .token.function {
+	color: $ux-figure-figureColor7
+}
+
+.token.regex {
+	color: $ux-figure-figureColor8;
+}
+
+.token.class-name,
+.token.maybe-class-name,
+.token.namespace {
+	color: $ux-figure-figureColor9;
+}
+
+.token.selector,
+.token.escape {
+	color: $ux-figure-figureColor10;
+}
+
+.token.tag .token.punctuation,
+.token.cdata {
+	color: $ux-figure-figureColor11;
+}

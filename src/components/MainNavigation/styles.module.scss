@@ -1,0 +1,45 @@
+@import '@ux/intents/lib/index';
+
+.nav {
+  flex: 1;
+  height: 100%;
+  padding-block: 1rem;
+
+  ul {
+    list-style-type: none;
+    margin:  0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  span {
+    display: block;
+    margin-inline: 1rem;
+    margin-block-end: .5rem;
+    text-transform: uppercase;
+    font-weight: $ux-textCaption-fontWeight;
+    font-size: $ux-textCaption-fontSize;
+    font-family: $ux-textCaption-fontFamily;
+    line-height: $ux-textCaption-lineHeight;
+    color: $ux-feedbackHighContrastPassive-feedbackColor;
+  }
+
+  a {
+    display: block;
+    padding: .5rem 1rem;
+    padding-inline-start: 2rem;
+    color: $ux-navigatePrimary-foregroundColor;
+    background: $ux-navigatePrimary-backgroundColor;
+    &:hover {
+      color: $ux-navigatePrimaryHovered-foregroundColor;
+      background: $ux-navigatePrimaryHovered-backgroundColor;
+    }
+  }
+}
+
+.list {
+  list-style-type: disc;
+  padding-inline-start: 1.25rem;
+}
