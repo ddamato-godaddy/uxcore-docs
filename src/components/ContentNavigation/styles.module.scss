@@ -1,5 +1,9 @@
 @import '../../intents.scss';
 
+.root {
+  flex: 1 0 260px;
+}
+
 .list {
   list-style: none;
   margin: 0;

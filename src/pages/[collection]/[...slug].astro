@@ -5,7 +5,7 @@ import getAllContent from '@utils/getAllContent.js';
 export async function getStaticPaths() {
   const content = await getAllContent();
   return content.map((entry) => ({
-    params: { slug: entry.slug, section: entry.section },
+    params: { slug: entry.slug, collection: entry.collection },
     props: { entry },
   }));
 }

@@ -19,12 +19,12 @@ function buildNavigation(reference) {
   }, {});
 }
 
-async function transform(collection) {
-  const body = await mdxNormalize(collection.body);
+async function transform(metadata) {
+  const body = await mdxNormalize(metadata.body);
   return {
-    ...collection,
+    ...metadata,
     body,
-    path: path.join(import.meta.env.BASE_URL, collection.section, collection.slug),
+    path: path.join(import.meta.env.BASE_URL, metadata.collection, metadata.slug),
   };
 }
 

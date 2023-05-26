@@ -2,7 +2,7 @@ import path from 'path';
 import { z, defineCollection } from 'astro:content';
 const glob = import.meta.glob('./**');
 
-export const sections = Object.keys(glob).map((filepath) => path.basename(path.dirname(filepath)));
+export const collectionNames = Object.keys(glob).map((filepath) => path.basename(path.dirname(filepath)));
 
 /**
  * Defines the frontmatter expected for all md(x) files
@@ -13,7 +13,7 @@ const schema = {
   }),
 };
 
-export const collections = sections.reduce(
+export const collections = collectionNames.reduce(
   (acc, name) => Object.assign(acc, { [name]: defineCollection({ ...schema }) }),
   {}
 );
